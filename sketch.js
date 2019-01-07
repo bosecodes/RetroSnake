@@ -29,19 +29,19 @@ function draw(){ //another well known function in p5js, this function is used to
 }
 
 function keyPressed(){ //finds the key pressed by the user and performs the task accordingly
-	if(keyCode === UP_ARROW){  
-		s.dir(0,-1);
+	if(keyCode === UP_ARROW){  //up arrow is used for giving up direction
+		s.dir(0,-1); //this is used to cause the snake to move 1 step in the direction of the coordinate (0,-1)
 	}
-	else if(keyCode === DOWN_ARROW){
-		s.dir(0,1);
+	else if(keyCode === DOWN_ARROW){ //down arrow is used for giving down direction
+		s.dir(0,1); //this is used to cause the snake to move 1 step in the direction of the coordinate (0,1)
 	}
-	else if(keyCode === RIGHT_ARROW){
-		s.dir(1,0);
+	else if(keyCode === RIGHT_ARROW){ //right arrow is used for giving right direction
+		s.dir(1,0); //this is used to cause the snake to move 1 step in the direction of the coordinate (1,0)
 	}
-	else if(keyCode === LEFT_ARROW){
-		s.dir(-1,0);
+	else if(keyCode === LEFT_ARROW){ //left arrow is used for giving left direction
+		s.dir(-1,0); //this is used to cause the snake to move 1 step in the direction of the coordinate (-1,0)
 	} //dir refers to direction here, however note that dir is not defined yet, it will be, in the Snake class
-}
+}//end of keyPressed function
 function Snake(){//like a constructor function
 	this.x = 0;
 	this.y = 0;
@@ -49,24 +49,26 @@ function Snake(){//like a constructor function
 	this.yspeed = 0;
 	this.total = 0;
 	this.tail = [];
+	//all variables were defined
+	this.dir = function(x,y){ //definition of dir i.e. direction function
+		this.xspeed = x; //speed in the x coordinate axis
+		this.yspeed = y; //speed in the y coordinate axis
+	} //end of dir function
 
-	this.dir = function(x,y){
-		this.xspeed = x;
-		this.yspeed = y;
-	}
-
-	this.update = function(){
-		if(this.total === this.tail.length){
+	this.update = function(){ //definition of update function
+		if(this.total === this.tail.length){ //this checks whether the length of the snake is currently equal to the tail length
+			//if it is, we run a loop to move each previous block of tail to the back of the array(snake after 0th position(head))
 			for(let i = 0; i < this.tail.length-1; i++){
 			this.tail[i] = this.tail[i+1];
 		}
-	}
+	}// end of update function
 		this.tail[this.total-1] = createVector(this.x, this.y);
-
-		this.x += (this.xspeed*scl);
-		this.y += (this.yspeed*scl);
-		this.x = constrain(this.x, 0, width-scl);
-		this.y = constrain(this.y, 0, height-scl);
+		this.x += (this.xspeed*scl); //change the position of x coordinate of the snake after each step change in position 
+		// xspeed scaled to scl
+		this.y += (this.yspeed*scl); //change the position of y coordinate of the snake after each step change in position
+		// yspeed scaled to scl
+		this.x = constrain(this.x, 0, width-scl); //providing a constrain for the snake to move only within the given width of box
+		this.y = constrain(this.y, 0, height-scl); //providing constrain for the snake to move only within the given height of box
 	}
 
 	this.show = function(){
