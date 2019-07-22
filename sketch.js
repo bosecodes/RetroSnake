@@ -1,3 +1,4 @@
+//this is made with p5js framework
 //Highly inspired by Daniel Shiffman from Coding Train
 let s;// mah snake, lah lah lah
 let scl =20;//to scale the elements to the respective sizes required to play the game in good style
