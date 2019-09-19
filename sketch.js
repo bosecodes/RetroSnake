@@ -71,7 +71,8 @@ function Snake(){//like a constructor function
 		this.x = constrain(this.x, 0, width-scl); //providing a constrain for the snake to move only within the given width of box
 		this.y = constrain(this.y, 0, height-scl); //providing constrain for the snake to move only within the given height of box
 	}
-
+// YOU ARE ALLOWED TO CONTRIBUTE SPECIFIC COMMENTS AFTER THIS, LET ME HAVE MY LYADH!
+// for serious, i will make sure that I comment specific stuff in the future as well whenever I contribute to this repo again
 	this.show = function(){
 		fill(240);
 		for(let i = 0; i < this.total; i++){
